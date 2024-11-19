@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication1", "ConsoleApplication1.vcxproj", "{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "..\..\..\..\koulusofta\tiedostot\test\test\test.vcxproj", "{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Debug|x64.ActiveCfg = Debug|x64
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Debug|x64.Build.0 = Debug|x64
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Debug|x86.ActiveCfg = Debug|Win32
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Debug|x86.Build.0 = Debug|Win32
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Release|x64.ActiveCfg = Release|x64
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Release|x64.Build.0 = Release|x64
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Release|x86.ActiveCfg = Release|Win32
+		{B3C03C11-7A54-499F-9EB7-5BC9A053CE81}.Release|x86.Build.0 = Release|Win32
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Debug|x64.ActiveCfg = Debug|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Debug|x64.Build.0 = Debug|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Debug|x64.Deploy.0 = Debug|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Debug|x86.ActiveCfg = Debug|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Debug|x86.Build.0 = Debug|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Debug|x86.Deploy.0 = Debug|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Release|x64.ActiveCfg = Release|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Release|x64.Build.0 = Release|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Release|x64.Deploy.0 = Release|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Release|x86.ActiveCfg = Release|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Release|x86.Build.0 = Release|ARM
+		{43BDECA1-848F-4A7E-89B7-EBD93205E5B9}.Release|x86.Deploy.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
