@@ -109,7 +109,7 @@ int main() {
     kiihdyta.lataaSpeksit("speksit.txt");
 
     bool edetaan=0;
-
+    bool voima = 1;
     string commandv;
 
     while (true) {
@@ -145,22 +145,82 @@ int main() {
                 cin >> edetaan;
                 while (edetaan) {
                     sendCommandToArduino(hSerial, "test");
+                    cout << "valitse testimoduuli: kulma/voima/takaisin"<<endl;
+                    string testimoduuli;
+                    cin >> testimoduuli;
                     double speed, accell;
                 	int matka;
-                    speed = ((loaded.jaksonkulma / loaded.StepAngle) / (loaded.jaksonaika / 1000))*1.5;
-                    accell = (speed / 1)*1.5;
-                    cout << "Anna haluttu matka askeleina(resolution nyt1/8)" << endl;
-                    cin >> matka;
-                    int intSpeed = static_cast<int>(round(speed));
-                    int intAccell = static_cast<int>(round(accell));
+                    string suunta="1";
+                    voima = true;
+                    if (testimoduuli == "kulma") {
+                        speed = (((loaded.jaksonkulma / loaded.StepAngle) / (loaded.jaksonaika / 1000)) / loaded.GearRatio) * 1.5;
+                        accell = (speed) * 1.5;
+                        cout << "speed: " << speed << " accell: " << accell << endl;
+                        cout << "Anna haluttu matka askeleina(resolution nyt1/8)" << endl;
 
-                    string komento = "run " + to_string(intSpeed) + " " + to_string(intAccell) + " " + to_string(matka);
-                    sendCommandToArduino(hSerial, komento);
+                        int intSpeed = static_cast<int>(round(speed));
+                        int intAccell = static_cast<int>(round(accell));
+                        cout << "speed: " << intSpeed << " accell: " << intAccell << endl;
+                        cin >> matka;//uusi looppi tähän!
+                        cout << "Anna haluttu suunta 0/1" << endl;
+                        cin >> suunta;
+                        
+                        string komento = "run " + to_string(intSpeed) + " " + to_string(intAccell) + " " + to_string(matka)+" "+suunta;
+                        sendCommandToArduino(hSerial, komento);
 
-                    cout<<"Jatketaanko? (0/1):" << endl;
-                    cin >>edetaan;
+                        cout << "Jatketaanko? (0/1):" << endl;
+                        cin >> edetaan; 
 
-
+                    }else if (testimoduuli=="voima")
+                    {
+                        string vkomento;
+                        bool naseva=0;
+                        cout << "saatavilla olevat komennot: set <hz>(nopeus),run <1/0> (suunta),stop,takaisin"<<endl;
+	                 while (voima)
+                     {
+                         cin >> vkomento;
+                        
+                        if (vkomento=="set")
+                        {
+                            cout << "nopeus asetettu" << endl;
+                            string vnopeus;
+                            
+                            cin >> vnopeus;
+                            string vviesti = "set " + vnopeus;
+                            sendCommandToArduino(hSerial, vviesti);
+                        }
+                         if (vkomento == "run") {
+                             bool suunta;
+                             naseva = true;
+                             cin >> suunta;
+                             if (suunta) {
+                                 sendCommandToArduino(hSerial, "go 1");
+                             }
+                             else
+                             {
+                                 sendCommandToArduino(hSerial, "go 0");
+                             }
+                         
+                         }else if (vkomento=="stop")
+                         {
+                             sendCommandToArduino(hSerial, "stop");
+                             naseva = false;
+                         }
+                         else if (vkomento == "takaisin")
+                             
+                         {
+                             sendCommandToArduino(hSerial, "stop");
+                             voima = false;
+                             naseva = true;
+                         }
+                         if (!naseva){ cout << "saatavilla olevat komennot: set <hz>(nopeus),run <1/0> (suunta),stop,takaisin" << endl; }
+	                 }
+                    }
+                    else if (testimoduuli == "takaisin") {
+                        edetaan = false;
+                    }else{
+                cout << "Syote ei kelpaa. kokeile kulma/voima" << endl;
+            }
 
                 }
                 

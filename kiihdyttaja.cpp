@@ -60,7 +60,7 @@ bool kiihdyttaja::lataaSpeksitNimella(const string& nimi)
 
 void kiihdyttaja::tallennaSpeksit(const string& tiedosto) const {
 
-    ofstream file(tiedosto, ios::app);
+    ofstream file(tiedosto, ios::trunc);
     if (!file.is_open()) {
         cout << "tiedoston avaamisessa ongelma" << endl;
         return;
@@ -78,7 +78,7 @@ void kiihdyttaja::tallennaSpeksit(const string& tiedosto) const {
 
 void kiihdyttaja::kyselySpeksit() {
     string nimi;
-    cout << "nimeä uudet speksit";
+    cout << "nimea uudet speksit: ";
     cin >> nimi;
 
     teecustomSpeksit(nimi);
